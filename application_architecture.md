@@ -14,7 +14,7 @@
 - There could be a histogram class, since it is something that is used quite often.
 
 # * Can files be used as both modules and as scripts?
-- 
+- Yes (modules are libraries you import/export and scripts are lines of code that are executed)
 
 # * Do modules all depend on each other or can they be used independently?
-- 
+- They can be used independently. 
