@@ -7,13 +7,10 @@ class Dictogram(dict):
 
     def __init__(self, word_list=None):
         """Initialise this histogram as a new dict and count given words."""
-        # Initialising an empty histogram into self by inhereting dict.
-        super(Dictogram, self).__init__()  
-        # Count of unique words in given histogram.
-        self.types = 0  
-        # Total frequency of all word tokens in the given histogram.
-        self.tokens = 0  
-        # Count words in given list, if any. 
+        super(Dictogram, self).__init__() # Initialising an empty histogram into self by inhereting dict. 
+        self.types = 0  # Unique words
+        self.tokens = 0 # Total frequency of all words.
+      
         if word_list is not None:
             for word in word_list:
                 self.add_count(word)
@@ -21,14 +18,19 @@ class Dictogram(dict):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         if word in self:
-            self.tokens += 1
+            self[word] += count
+            self.tokens += count
         else:
+            self[word] = count 
+            self.tokens += count 
             self.types += 1
-        
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
+        if word in self:
+            return self[word]
+        else:
+            return 0
 
 
 def print_histogram(word_list):
