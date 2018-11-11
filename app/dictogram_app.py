@@ -1,5 +1,4 @@
-import /Users/ThomasLee/Desktop/repos/CS-2-Tweet-Generator/1 - classes/dictogram.py
-import 1 - classes folder.file 
+from classes.dictogram import Dictogram
 
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))

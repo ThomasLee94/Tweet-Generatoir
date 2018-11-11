@@ -21,6 +21,7 @@
   "linkedlist_test.py::LinkedListTest::test_length_after_delete": true,
   "linkedlist_test.py::LinkedListTest::test_length_after_prepend": true,
   "linkedlist_test.py::LinkedListTest::test_prepend": true,
+  "listogram_test.py": true,
   "listogram_test.py::ListogramTest::test_add_count": true,
   "listogram_test.py::ListogramTest::test_entries": true,
   "listogram_test.py::ListogramTest::test_types": true
