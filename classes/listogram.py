@@ -10,7 +10,7 @@ class Listogram(list):
         """Initialize this histogram as a new list and count given words."""
         super(Listogram, self).__init__()  # Initialise new list.
         self.types = 0  # Count of unique word types in this histogram.
-        self.tokens = 0  # Total frequency in histogram.
+        self.tokens = 0 # Total frequency in histogram.
        
         if word_list is not None:
             for word in word_list:
@@ -18,12 +18,16 @@ class Listogram(list):
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
+        flag = False
         for inner_list in self:
             if word == inner_list[0]:
+                flag = True
                 inner_list[1] += count
-        else:
+
+        if not flag:
             self.append([word, count])
             self.types += 1
+
         self.tokens += count
 
     def frequency(self, word):

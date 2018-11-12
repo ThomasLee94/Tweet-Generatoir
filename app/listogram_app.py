@@ -1,4 +1,4 @@
-from classes.listogram import Listogram
+from listogram import Listogram
 
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
@@ -10,7 +10,6 @@ def print_histogram(word_list):
         freq = histogram.frequency(word)
         print('{!r} occurs {} times'.format(word, freq))
     print()
-
 
 def main():
     import sys
