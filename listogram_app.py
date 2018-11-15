@@ -1,4 +1,4 @@
-from listogram import Listogram
+from classes.listogram import Listogram
 
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
