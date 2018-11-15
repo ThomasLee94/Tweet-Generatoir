@@ -1,6 +1,6 @@
 """ Take a histogram and output a random word from it based on its frequency"""
 import random
-from functions.get_text_from_corpus import read_file
+from get_text_from_corpus import read_file
 
 def histogram(words_list):
     histogram_dict = {}
