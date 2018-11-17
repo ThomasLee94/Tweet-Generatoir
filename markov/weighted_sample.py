@@ -18,7 +18,7 @@ def histogram(words_list):
 def unique_words(histogram_dict):
     return len(histogram_dict)
 
-def random_word(histogram_dict):
+def output_random_word(histogram_dict):
     counter = 0
     # Finding total frequency of all words in the histogram.
     total_frequency_list = histogram_dict.values()
@@ -34,18 +34,19 @@ def random_word(histogram_dict):
         if counter > random_count:
             return key
 
-def random_word_markov(dictionary_of_dictionary):
-    counter = 0
-    # Finding total frequency of all words in sub-dictionary
-    total_frequency = dictionary_of_dictionary.tokens
-    random_count = random.randint(0, total_frequency-1)
+# def random_word_markov(dictionary_of_dictionary):
+#     counter = 0
+#     # Finding total frequency of all words in sub-dictionary
+#     total_frequency = dictionary_of_dictionary.tokens
+#     random_count = random.randint(0, total_frequency-1)
 
-    # ! The value of a dictionary_of_dictionary will be a dictionary
-    for key,value in dictionary_of_dictionary.items():
-        counter += value.values()
-        if counter > random_count:
-            return key 
-            
+#     # ! The value of a dictionary_of_dictionary will be a dictionary
+#     for key,value in dictionary_of_dictionary.items():
+#         for key_inner_dict, value_inner_dict in value.items():
+#             counter += value_inner_dict.values()
+#             if counter > random_count:
+#                 return key 
+
 # * Random words printed put into a dictionary to see
 # * the distribution more easily.
 def random_word_histogram(words_list, histogram_dict):

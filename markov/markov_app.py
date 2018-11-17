@@ -11,8 +11,8 @@ def main():
             next_type = word_list[i + 1]
             markov.add_word_to_dict_of_dict(current_type, next_type)
 
-    sentence = markov.generate_random_sentence()
-    print("".join(sentencejjh))
+    sentence = markov.generate_random_sentence(word_list)
+    print("".join(sentence))
 
 if __name__ == '__main__':
     main()
