@@ -15,6 +15,8 @@ class Markov(dict):
         super(Markov, self).__init__() # Initialise empty dictionary
         self.types = 0
         self.tokens = 0
+        self.start_token = 0
+        self.end_token = 0 
         if word_list is not None:
             self.create_dict_of_dict(word_list)
 
@@ -51,8 +53,8 @@ class Markov(dict):
         
         # Now using markov chains to append the most likely "next" word
         for i in range(0, sentence_length-1):
-            random_next_word = output_random_word(self[random_word])
-            random_sentence_output.append(random_next_word)
+            random_word = output_random_word(self[random_word])
+            random_sentence_output.append(random_word)
         return random_sentence_output
 
 
