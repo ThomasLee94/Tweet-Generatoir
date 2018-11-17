@@ -1,4 +1,8 @@
-""" Take a histogram and output a random word from it based on its frequency"""
+""" 
+Take a histogram and output a random word from it based on its frequency.
+This means words of a higer frequency have a higher probability to be
+outputted in random_word()
+"""
 import random
 from get_text_from_corpus import read_file
 
@@ -30,6 +34,18 @@ def random_word(histogram_dict):
         if counter > random_count:
             return key
 
+def random_word_markov(dictionary_of_dictionary):
+    counter = 0
+    # Finding total frequency of all words in sub-dictionary
+    total_frequency = dictionary_of_dictionary.tokens
+    random_count = random.randint(0, total_frequency-1)
+
+    # ! The value of a dictionary_of_dictionary will be a dictionary
+    for key,value in dictionary_of_dictionary.items():
+        counter += value.values()
+        if counter > random_count:
+            return key 
+            
 # * Random words printed put into a dictionary to see
 # * the distribution more easily.
 def random_word_histogram(words_list, histogram_dict):
