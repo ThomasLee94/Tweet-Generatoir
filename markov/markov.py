@@ -15,8 +15,7 @@ class Markov(dict):
         super(Markov, self).__init__() # Initialise empty dictionary
         self.types = 0
         self.tokens = 0
-        self.start_token = 0
-        self.end_token = 0 
+         
         if word_list is not None:
             self.create_dict_of_dict(word_list)
 
@@ -27,9 +26,12 @@ class Markov(dict):
                 current_type = word_list[i]
                 next_word = word_list[i + 1]
                 self.add_word_to_dict_of_dict(current_type, next_word)
+            else:
+                current_type = word_list[i]
+                next_word = 'END'
+                self.add_word_to_dict_of_dict(current_type, next_word)
 
     def add_word_to_dict_of_dict(self, current_type, next_word):  
-        print("********THIS IS THE SELF-DICTIONARY: {}".format(self))
         if current_type in self:
             dictogram = self[current_type]
             dictogram.add_count(next_word)
@@ -43,18 +45,26 @@ class Markov(dict):
             
     
     def generate_random_sentence(self, word_list, sentence_length=8):
-        print("THIS IS THE SELF-DICTIONARY: {}".format(self))
         random_sentence_output = list()
         # I will use a completely random word as my first word.
         # TODO: I will try and pick the most frequently used word as my first "random" word. 
-        random_index = random.randint(0, len(word_list)-1)
-        random_word = word_list[random_index]
+        random_index = random.randint(0, len(self.keys())-1)
+        random_word = list(self.keys())[random_index]
         random_sentence_output.append(random_word)
         
+        output_count = 0
         # Now using markov chains to append the most likely "next" word
-        for i in range(0, sentence_length-1):
+        while output_count < sentence_length:
             random_word = output_random_word(self[random_word])
-            random_sentence_output.append(random_word)
+            if not random_word == 'END':
+                random_sentence_output.append(random_word)
+                output_count += 1
+            # 'END' will be used to check if the random word picked is not at the
+            # end of the given words_list. If it is, there can be no "next_word". 
+            else:
+                new_index = random.randint(0, len(self.keys()) - 1)
+                random_word = list(self.keys())[new_index]
+
         return random_sentence_output
 
 
