@@ -1,4 +1,4 @@
-from histogram.markov import Markov
+from markov import Markov
 
 def main():
     word_list = ['hi', 'hi', 'hi', 'bye', 'bye', 'bye', 'bye', 'hello', 'there', 'is', 'tokens', 'and', 'words']
@@ -9,9 +9,9 @@ def main():
         if i + 1 < list_len:
             current_type = word_list[i]
             next_type = word_list[i + 1]
-            markov.add_word(current_type, next_type)
+            markov.add_word_to_dict_of_dict(current_type, next_type)
 
-    sentence = markov.generate_sentence()
+    sentence = markov.generate_random_sentence()
     print("".join(sentencejjh))
 
 if __name__ == '__main__':
