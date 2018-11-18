@@ -34,11 +34,12 @@ class Markov(dict):
     def add_word_to_dict_of_dict(self, current_type, next_word):  
         if current_type in self:
             dictogram = self[current_type]
+            # Dictogram class incrementing frequency if current_type is found 
+            # in initialised dictionary.
             dictogram.add_count(next_word)
-            # if next_word in self[current_type]:
-            #     self[current_type][next_word] += 1
-            #     self.tokens += 1
         else:
+            # New {current_type: {next_word: 1}} pair being added if current_type
+            # is not found. Dictogram used to make histogram. 
             self[current_type] = Dictogram([next_word])
             self.types += 1
             self.tokens += 1
@@ -53,7 +54,7 @@ class Markov(dict):
         random_sentence_output.append(random_word)
         
         output_count = 0
-        # Now using markov chains to append the most likely "next" word
+        # * Now using markov chains to append the most likely "next" word
         while output_count < sentence_length:
             random_word = output_random_word(self[random_word])
             if not random_word == 'END':

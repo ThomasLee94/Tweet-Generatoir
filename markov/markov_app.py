@@ -1,7 +1,7 @@
 from markov import Markov
 
 def main():
-    word_list = ['hi', 'hi', 'hi', 'bye', 'bye', 'bye', 'bye', 'hello', 'there', 'is', 'tokens', 'and', 'words', 'END']
+    word_list = ['hi', 'hi', 'hi', 'bye', 'bye', 'bye', 'bye', 'hello', 'there', 'is', 'tokens', 'and', 'words']
     list_len = len(word_list)
     markov = Markov()
 

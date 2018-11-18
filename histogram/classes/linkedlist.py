@@ -1,22 +1,10 @@
 #!python
+from node import Node
 
-
-class Node(object):
-
-    def __init__(self, data):
-        """Initialize this node with the given data."""
-        self.data = data
-        self.next = None
-
-    def __repr__(self):
-        """Return a string representation of this node."""
-        return 'Node({!r})'.format(self.data)
-
-
-class LinkedList(object):
+class Linkedlist(object):
 
     def __init__(self, items=None):
-        """Initialize this linked list and append the given items, if any."""
+        """Initialise this linked list and append the given items, if any."""
         self.head = None  # First node
         self.tail = None  # Last node
         # Append given items
@@ -56,18 +44,45 @@ class LinkedList(object):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        node_counter = 0 
+        for item in self.items():
+            node_counter += 1
+        return node_counter
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
+        new_node = Node(item)
+        # First we check if we have any nodes to begin with.
+        if self.is_empty():
+            # If self.head is None, it means there are no nodes in self
+            # this means the new_node will both represent both the head 
+            # and the tail.
+            self.head = new_node
+            self.tail = new_node
 
+        # The first node that is appended is the head, the last is the tail. 
+        # The 'head' is the first first node, the 'tail' is the last node. 
+        else:
+            # Point tail to new_node.
+            self.tail.next = new_node
+            self.tail = new_node
+            
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
+        new_node = Node(item)
+
+        if self.is_empty():
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -75,6 +90,12 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
+
+        if self.is_empty():
+            print("{} is not in linkedlist".format(quality))
+            return None
+        else:
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -86,33 +107,3 @@ class LinkedList(object):
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
 
-def test_linked_list():
-    ll = LinkedList()
-    print('list: {}'.format(ll))
-
-    print('\nTesting append:')
-    for item in ['A', 'B', 'C']:
-        print('append({!r})'.format(item))
-        ll.append(item)
-        print('list: {}'.format(ll))
-
-    print('head: {}'.format(ll.head))
-    print('tail: {}'.format(ll.tail))
-    print('length: {}'.format(ll.length()))
-
-    # Enable this after implementing delete method
-    delete_implemented = False
-    if delete_implemented:
-        print('\nTesting delete:')
-        for item in ['B', 'C', 'A']:
-            print('delete({!r})'.format(item))
-            ll.delete(item)
-            print('list: {}'.format(ll))
-
-        print('head: {}'.format(ll.head))
-        print('tail: {}'.format(ll.tail))
-        print('length: {}'.format(ll.length()))
-
-
-if __name__ == '__main__':
-    test_linked_list()
