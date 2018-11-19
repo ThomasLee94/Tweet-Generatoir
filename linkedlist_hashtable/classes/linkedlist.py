@@ -2,7 +2,6 @@
 from classes.node import Node
 
 class Linkedlist(object):
-
     def __init__(self, items=None):
         """Initialise this linked list and append the given items, if any."""
         self.head = None  # First node
@@ -100,7 +99,7 @@ class Linkedlist(object):
         else:
             current_node = self.head
             # Quality function is used to see if conditions are met.
-            for i in range(0, self.length):
+            for i in range(0, self.length()):
                 if quality(current_node.data):
                     return current_node.data
                 else:
@@ -121,34 +120,42 @@ class Linkedlist(object):
             ValueError('Item not found: {}'.format(item))
         
         # Check if the item that is to deleted is in the head or tail node.
-        head_or_tail = True
-        current_node = self.head
-        previous_node = None
-
-        while head_or_tail:
-            # Head
-            if current_node.data == item:
-                current_node.next = None
-                current_node = current_node.next
-                head_or_tail = False
-            # Check if there is only one node in linkedlist.
-            if self.head == self.tail:
-                self.head = None
-                self.tail = None
-            # Tail
-            else:
-                current_node.next = None
-                previous_node = current_node 
-                head_or_tail = False
         
         # Anything executed outside of while loop will be a node in between
-        # both the head and tail node. This means the previous node just has 
+        # the head and tail node. This means the previous node just has 
         # skip the current node. 
         # This must be done outside the while loop as neither self.head or
         # self.tail is effected. 
+
+        current_node = self.head 
+        previous_node = None
         
-        previous_node.next = current_node.next 
+        while current_node:
+            if current_node.data != item:
+                previous_node = current_node
+                current_node = current_node.next
+            else:
+                if previous_node == None:
+                    self.head = self.head.next
+                    return
+                # Specifically checking the head 
+                if current_node.data == item:
+                    current_node = current_node.next
+                    current_node = None
+                    return
+                # Check if there is only one node in linkedlist.
+                if self.length() == 1:
+                    self.tail = current_node
+                # Specifically checking the tail. 
+                if current_node == self.tail:
+                    current_node.next = None
+                else:
+                    previous_node.next = current_node.next
+                    return 
+            raise ValueError('Item not found: {}'.format(item))
+
         
+    
 
 
 
