@@ -1,5 +1,7 @@
 {
+  "linkedlist_test.py::LinkedlistTest": true,
   "linkedlist_test.py::LinkedlistTest::test_delete_with_3_items": true,
   "linkedlist_test.py::LinkedlistTest::test_delete_with_5_items": true,
-  "linkedlist_test.py::LinkedlistTest::test_length_after_delete": true
+  "linkedlist_test.py::LinkedlistTest::test_length_after_delete": true,
+  "linkedlist_test.py::NodeTest": true
 }
