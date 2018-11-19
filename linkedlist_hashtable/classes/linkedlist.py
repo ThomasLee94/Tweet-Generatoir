@@ -1,5 +1,5 @@
 #!python
-from node import Node
+from classes.node import Node
 
 class Linkedlist(object):
 

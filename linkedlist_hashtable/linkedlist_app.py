@@ -1,5 +1,5 @@
-from node import Node
-from linkedlist import Linkedlist
+from classes.node import Node
+from classes.linkedlist import Linkedlist
 
 def test_linked_list():
     ll = Linkedlist()
