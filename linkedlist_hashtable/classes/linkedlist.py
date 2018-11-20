@@ -117,12 +117,18 @@ class Linkedlist(object):
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
         if self.is_empty():
-            print("Linkedlist is completley empty")
-            return
+            raise ValueError('Linkedlist is empty')
+
+        # check if item is in head
+        if self.head.data == item:
+            self.head = self.head.next
+            # We are checking if there is only one node in the linkedlist. 
+            if self.tail.data == item:
+                self.tail = None
+            return 
         
         current_node = self.head 
         previous_node = None
-        
         while current_node:
             # * Loop through all nodes in linkedlist until 
             # * current_node.data is equal to the passed-in argument item.
@@ -130,23 +136,24 @@ class Linkedlist(object):
                 previous_node = current_node
                 current_node = current_node.next
             else:
-                # * If a match is found, check if its the head node. 
-                if self.head == current_node:
-                    # Deleting the next of the current_node. 
-                    current_node.next = None
-                    return
-                # *If match is found, check if its the tail node. 
-                if self.tail == current_node:
-                    # Deleting the next of the previous_node so the current_node is deleted.
-                    previous_node.next = None
-                    return
-                # * If match is found, check if it is neither the head or 
-                # * tail node. This means it just needs to skill the 
-                # * current_node to delete it. 
+                # If there is a match, delete previous_node.next by setting it to None and reinitialise self.tail. 
+                if self.tail.data == item:
+                    if previous_node:
+                        previous_node.next = None
+                        self.tail = previous_node
+                        return 
+                    else:
+                        self.head = None
+                        self.tail = None
+                        return
                 else:
+                    # * If match is found, check if it is neither the head or 
+                    # * tail node. This means it just needs to skill the 
+                    # * current_node to delete it. 
                     previous_node.next = current_node.next
                     return 
-            raise ValueError('Item not found: {}'.format(item))
+
+        raise ValueError('Item not found: {}'.format(item))
 
               
 

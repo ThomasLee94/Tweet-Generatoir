@@ -52,7 +52,7 @@ def output_random_word(histogram_dict):
 def random_word_histogram(words_list, histogram_dict):
     random_word_list = list()
     for i in range(1000):
-        random_word_list.append(random_word(histogram_dict))
+        random_word_list.append(output_random_word(histogram_dict))
     weighted_histogram = histogram(random_word_list)
     return weighted_histogram
     

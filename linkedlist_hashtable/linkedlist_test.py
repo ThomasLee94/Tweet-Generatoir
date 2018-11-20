@@ -26,7 +26,7 @@ class NodeTest(unittest.TestCase):
         assert node1.next.next is node3  # Two links
 
 
-class LinkedlistTest(unittest.TestCase):
+class LinkedListTest(unittest.TestCase):
 
     def test_init(self):
         ll = Linkedlist()

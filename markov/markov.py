@@ -46,6 +46,7 @@ class Markov(dict):
             
     
     def generate_random_sentence(self, word_list, sentence_length=8):
+        # print(list(self.keys()))
         random_sentence_output = list()
         # I will use a completely random word as my first word.
         # TODO: I will try and pick the most frequently used word as my first "random" word. 
@@ -53,7 +54,7 @@ class Markov(dict):
         random_word = list(self.keys())[random_index]
         random_sentence_output.append(random_word)
         
-        output_count = 0
+        output_count = 1
         # * Now using markov chains to append the most likely "next" word
         while output_count < sentence_length:
             random_word = output_random_word(self[random_word])
