@@ -120,7 +120,6 @@ class HashTable(object):
             # Append new key-value pair as a tuple. 
             bucket.append((key,value))
             
-
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         # TODO: Running time: O(???) Why and under what conditions?"""
@@ -129,5 +128,14 @@ class HashTable(object):
         # TODO: If found, delete entry associated with given key
         # TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
+
+        bucket_index = self._bucket_index(key)
+        bucket = self.buckets[bucket_index]
+        node = buckets[bucket_index].find(key)
+
+        if node is not None:
+            bucket.delete(node)
+        else:
+            raise KeyError('Key not found: {}'.format(key))
 
 
