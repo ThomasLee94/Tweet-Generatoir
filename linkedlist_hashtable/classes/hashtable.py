@@ -1,5 +1,4 @@
 #!python
-
 from linkedlist import LinkedList
 
 class HashTable(object):
@@ -75,17 +74,19 @@ class HashTable(object):
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         # TODO: Running time: O(???) Why and under what conditions?"""
+        # Runtime = O(l) - best case O(1), worst case O(n)
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
 
         # Find bucket containing key-value pair. 
         bucket_index = self._bucket_index(key)
-        node = buckets[bucket_index].find(key)
-        return (node != None)
+        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
+        return (bucket_node != None)
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        # TODO: Running time: O(???) Why and under what conditions?"""
+        # Runtime = O(1)
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, return value associated with given key
@@ -93,12 +94,12 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
         bucket_index = self._bucket_index(key)
-        node = buckets[bucket_index].find(key)
+        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
 
-        if node is None:
+        if bucket_node is None:
             raise KeyError('Key not found: {}'.format(key))
         else:
-            return node[1]
+            return bucket_node[1]
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
@@ -109,16 +110,15 @@ class HashTable(object):
         # TODO: Otherwise, insert given key-value entry into bucket
 
         bucket_index = self._bucket_index(key)
-        bucket = self.buckets[bucket_index]
-        node = buckets[bucket_index].find(key)
+        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
 
-        if node is not None:
-            bucket.delete(node)
+        if bucket_node is not None:
+            self.bucket.delete(node)
             # Append key-value pair as a tuple after deleting. 
-            bucket.append((key,value))
+            self.bucket.append((key,value))
         else:
             # Append new key-value pair as a tuple. 
-            bucket.append((key,value))
+            self.bucket.append((key,value))
             
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -130,12 +130,11 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
         bucket_index = self._bucket_index(key)
-        bucket = self.buckets[bucket_index]
-        node = buckets[bucket_index].find(key)
+        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
 
-        if node is not None:
-            bucket.delete(node)
-        else:
+        if bucket_node is None:
             raise KeyError('Key not found: {}'.format(key))
+        else:
+            self.bucket.delete(node)
 
 
