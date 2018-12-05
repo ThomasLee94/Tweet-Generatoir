@@ -1,12 +1,12 @@
 #!python
-from linkedlist import LinkedList
+from classes.linkedlist import Linkedlist
 
 class HashTable(object):
 
     def __init__(self, init_size=8):
         """Initialise this hash table with the given initial size."""
         # Create a new list (used as fixed-size array) of empty linked lists
-        self.buckets = [LinkedList() for _ in range(init_size)]
+        self.buckets = [Linkedlist() for _ in range(init_size)]
 
     def __str__(self):
         """Return a formatted string representation of this hash table."""
@@ -80,8 +80,9 @@ class HashTable(object):
 
         # Find bucket containing key-value pair. 
         bucket_index = self._bucket_index(key)
-        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
-        return (bucket_node != None)
+        bucket_node = self.buckets[bucket_index]
+        key_value_tuple = bucket_node.find(lambda item: item[0] == key)
+        return (key_value_tuple != None)
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
@@ -94,12 +95,13 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
         bucket_index = self._bucket_index(key)
-        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
+        bucket_node = self.buckets[bucket_index]
+        key_value_tuple = bucket_node.find(lambda item: item[0] == key)
 
-        if bucket_node is None:
+        if key_value_tuple is None:
             raise KeyError('Key not found: {}'.format(key))
         else:
-            return bucket_node[1]
+            return key_value_tuple[1]
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
@@ -110,12 +112,13 @@ class HashTable(object):
         # TODO: Otherwise, insert given key-value entry into bucket
 
         bucket_index = self._bucket_index(key)
-        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
+        bucket_node = self.buckets[bucket_index]
+        key_value_tuple = bucket_node.find(lambda item: item[0] == key)
 
         if bucket_node is not None:
-            self.bucket.delete(node)
+            bucket_node.delete(key_value_tuple)
             # Append key-value pair as a tuple after deleting. 
-            self.bucket.append((key,value))
+            bucket_node.append((key,value))
         else:
             # Append new key-value pair as a tuple. 
             self.bucket.append((key,value))
@@ -130,11 +133,12 @@ class HashTable(object):
         # Hint: raise KeyError('Key not found: {}'.format(key))
 
         bucket_index = self._bucket_index(key)
-        bucket_node = self.buckets[bucket_index].find(lambda item: item[0] == key)
+        bucket_node = self.buckets[bucket_index]
+        key_value_tuple = bucket_node.find(lambda item: item[0] == key)
 
-        if bucket_node is None:
+        if key_value_tuple is None:
             raise KeyError('Key not found: {}'.format(key))
         else:
-            self.bucket.delete(node)
+            self.buckets.delete(key_value)
 
 
