@@ -1,5 +1,12 @@
 {
-  "hashtable_test.py": true,
+  "hashtable_test.py::HashTableTest::test_contains": true,
+  "hashtable_test.py::HashTableTest::test_delete": true,
+  "hashtable_test.py::HashTableTest::test_items": true,
+  "hashtable_test.py::HashTableTest::test_keys": true,
+  "hashtable_test.py::HashTableTest::test_length": true,
+  "hashtable_test.py::HashTableTest::test_set_and_get": true,
+  "hashtable_test.py::HashTableTest::test_set_twice_and_get": true,
+  "hashtable_test.py::HashTableTest::test_values": true,
   "linkedlist_app.py::test_linked_list": true,
   "linkedlist_test.py::LinkedlistTest::test_delete_with_3_items": true,
   "linkedlist_test.py::LinkedlistTest::test_delete_with_5_items": true,

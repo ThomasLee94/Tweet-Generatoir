@@ -1,5 +1,4 @@
 from classes.hashtable import HashTable 
-from classes.hashtable import HashTable 
 
 def test_hash_table():
     ht = HashTable()
