@@ -98,12 +98,13 @@ class HashTable(object):
         bucket = self.buckets[bucket_index]
         key_value_tuple = bucket.find(lambda item: item[0] == key)
 
-        if bucket is not None:
+        if key_value_tuple is not None:
             bucket.delete(key_value_tuple)
             # Append key-value pair as a tuple after deleting. 
             bucket.append((key,value))
-        # Append new key-value pair as a tuple. 
-        bucket.append((key,value))
+        else:
+            # Append new key-value pair as a tuple. 
+            bucket.append((key,value))
             
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
@@ -117,6 +118,6 @@ class HashTable(object):
         if key_value_tuple is None:
             raise KeyError('Key not found: {}'.format(key))
         else:
-            bucket.delete(key_value)
+            bucket.delete(key_value_tuple)
 
 

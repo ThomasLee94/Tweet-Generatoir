@@ -1,5 +1,5 @@
 # Importing dictogram class. 
-from dictogram import Dictogram
+from classes.dictogram import Dictogram
 # Importing a function that outputs a weighted random word based on a given histogram. 
 from weighted_sample import output_random_word 
 # Returns parsed corpus into list form.
@@ -10,9 +10,9 @@ import random
 # file_path = "./texts/beekeeper.txt"
 # word_list = read_file(file_path)
 
-class Markov(dict):
+class Markov_second_order(dict):
     def __init__(self, word_list=None):
-        super(Markov, self).__init__() # Initialise empty dictionary
+        super(Markov_second_order, self).__init__() # Initialise empty dictionary
         self.types = 0
         self.tokens = 0
          
@@ -21,13 +21,14 @@ class Markov(dict):
 
     def create_dict_of_dict(self, word_list):
         list_length = len(word_list)
-        for i in range(0, list_length-1):
+        for i in range(0, list_length-2):
             if i + 1 < list_length:
-                current_type = word_list[i]
-                next_word = word_list[i + 1]
-                self.add_word_to_dict_of_dict(current_type, next_word)
+                # Tuple pairing of two words as current_tuple
+                current_tuple = (word_list[i], word_list[i+1])
+                next_word = word_list[i+2]
+                self.add_word_to_dict_of_dict(current_tuple, next_word)
             else:
-                current_type = word_list[i]
+                current_type = (word_list[i], word_list[i+1])
                 next_word = 'END'
                 self.add_word_to_dict_of_dict(current_type, next_word)
 
@@ -46,10 +47,8 @@ class Markov(dict):
             
     
     def generate_random_sentence(self, word_list, sentence_length=8):
-        # print(list(self.keys()))
         random_sentence_output = list()
         # I will use a completely random word as my first word.
-        # TODO: I will try and pick the most frequently used word as my first "random" word. 
         random_index = random.randint(0, len(self.keys())-1)
         random_word = list(self.keys())[random_index]
         random_sentence_output.append(random_word)

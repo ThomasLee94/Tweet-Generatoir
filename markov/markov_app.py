@@ -1,11 +1,13 @@
-from markov import Markov
+from markov_second_order import Markov_second_order
 from weighted_sample import histogram, random_word_histogram
+from get_text_from_corpus import read_file
 
 def main():
-    word_list = "one fish two fish red fish blue fish".split()
+    word_list = read_file("./texts/beekeeper.txt")
+    # word_list = "one fish two fish red fish blue fish".split()
     # word_list = ['hi', 'hi', 'hi', 'bye', 'bye', 'bye', 'bye', 'hello', 'there', 'is', 'tokens', 'and', 'words']
     list_len = len(word_list)
-    markov = Markov()
+    markov = Markov_second_order()
 
     for i in range(0, list_len):
         if i + 1 < list_len:
