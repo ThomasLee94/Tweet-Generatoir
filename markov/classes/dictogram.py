@@ -13,8 +13,7 @@ class Dictogram(dict):
         self.tokens = 0 # Total frequency of all words in histogram.
       
         if word_list is not None:
-            for word in word_list:
-                self.add_count(word)
+            self.add_count(word_list)
         
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
@@ -24,6 +23,17 @@ class Dictogram(dict):
             self[word] = count 
             self.types += 1
         self.tokens += count
+    
+    def add_count_tuple(self, next_type, count=1):
+        """Increase frequency count of given tuple by given count amount."""
+        if next_type in self:
+            print('here')
+            self[next_type] += count
+        else:
+            print('here2')
+            self[next_type] = count
+            self.types += 1
+        self.tokens += count 
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
