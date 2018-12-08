@@ -19,6 +19,11 @@ Setup.md
 */misc/*
 misc/*
 
+# Ignoring individual files
+markov_first_order.py
+linkedlist.py
+node.py
+
 # Created by https://www.gitignore.io/api/macos,python
 
 ### macOS ###
