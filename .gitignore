@@ -1,6 +1,9 @@
 # Ignoring texts
 *.txt
 
+# Ignore setup
+Setup.md
+
 # Ignoring misc
 */misc/*
 misc/*
