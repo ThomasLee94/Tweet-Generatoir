@@ -1,6 +1,9 @@
 # Ignoring texts
 *.txt
 
+# Ignoring pytest_cache
+*.pytest_cache
+
 # Ignore setup
 Setup.md
 
