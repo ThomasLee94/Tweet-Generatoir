@@ -1,6 +1,10 @@
 # Ignoring texts
 *.txt
 
+# Ignoring hastables & linkedlists
+*/linkedlist_hashtable/*
+linkedlist_hashtable/*
+
 # Ignoring pytest_cache
 *.pytest_cache
 
