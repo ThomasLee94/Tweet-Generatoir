@@ -1,4 +1,9 @@
-.txt
+# Ignoring texts
+*.txt
+
+# Ignoring misc
+*/misc/*
+misc/*
 
 # Created by https://www.gitignore.io/api/macos,python
 
