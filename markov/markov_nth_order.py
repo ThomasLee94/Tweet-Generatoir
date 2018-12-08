@@ -14,7 +14,7 @@ class Markov_nth_order(dict):
 
     def create_dict_of_dict(self, word_list):
         """ 
-        Creating a dictionary of {(current_type, next_word):{next_next_word: 1}} structure.
+        Creating a dictionary of {(current_tuple):{next_type: 1}} structure.
         """
         list_length = len(word_list)
         for i in range(0, list_length-self.order):
