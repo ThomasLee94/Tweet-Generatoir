@@ -5,6 +5,10 @@
 */linkedlist_hashtable/*
 linkedlist_hashtable/*
 
+# Ignoring histograms
+*/histogram/*
+histogram/*
+
 # Ignoring pytest_cache
 *.pytest_cache
 
