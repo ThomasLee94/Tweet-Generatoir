@@ -23,6 +23,7 @@ misc/*
 markov_first_order.py
 linkedlist.py
 node.py
+regex.py
 
 # Created by https://www.gitignore.io/api/macos,python
 
