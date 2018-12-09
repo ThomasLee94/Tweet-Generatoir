@@ -22,7 +22,6 @@ class Markov_nth_order(dict):
                 # Tuple of nth order as current_tuple
                 current_tuple = tuple(word for word in word_list[i: i + self.order])
                 next_type = word_list[i + 1 + self.order]
-                print(current_tuple)
                 self.add_word_to_dict_of_dict(current_tuple, next_type)
             else:
                 current_type = (word_list[i], word_list[i+self.order])
@@ -58,7 +57,6 @@ class Markov_nth_order(dict):
         random_word = random_type[0]
         next_words = list(random_type[1:self.order])
         random_sentence_output.extend((word for word in random_type))
-        print('random word')
         
         output_count = 1
         # * Now using 2nd order markov chains to append the most likely "next_next_word"
