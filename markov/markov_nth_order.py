@@ -55,6 +55,7 @@ class Markov_nth_order(dict):
         random_index = random.randint(0, len(self.keys())-1)
         random_type = list(self.keys())[random_index]
         random_word = random_type[0]
+        
         next_words = list(random_type[1:self.order])
         random_sentence_output.extend((word for word in random_type))
         
