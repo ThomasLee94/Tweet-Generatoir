@@ -1,5 +1,4 @@
-# Ignoring texts
-*.txt
+*pyc 
 
 # Ignoring hastables & linkedlists
 */linkedlist_hashtable/*
