@@ -1,5 +1,6 @@
 import os
 import dotenv
+from os import environ
 from requests_oauthlib import OAuth1Session
 
 dotenv.load_dotenv('.env')
@@ -26,4 +27,8 @@ resp = session.post(url, { 'status': status })
 
 # Show the text from the response
 print(resp.text)
+
+def tweet(status):
+    resp = session.post(url, { 'status': status })
+    return resp.text
 
