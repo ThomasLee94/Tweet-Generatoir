@@ -1,4 +1,5 @@
 *pyc 
+*.env
 
 # Ignoring hastables & linkedlists
 */linkedlist_hashtable/*
