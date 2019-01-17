@@ -28,5 +28,5 @@ flask run
 You will now see a "Tweet this" button, this will direct post a tweet to my live twitter account linked below. The flask app and twitter account are connected with the Twitter API. 
 
 ## Live:
-[I'm an inline-style link](https://twitter.com/Southparktweet2?lang=en)
+[South Park Twitter Account](https://twitter.com/Southparktweet2?lang=en)
 
