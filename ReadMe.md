@@ -5,7 +5,7 @@
 Using Markov chains to generate a random sentence from a given corpus (South Park text). 
 Currently able to generate chains to the n'th order. 
 
-## Requirements & Instalation: 
+## Requirements: 
 
 Open your terminal. Copy and paste the following lines into your terminal and hit entry in the following order:
 
