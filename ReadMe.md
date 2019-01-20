@@ -3,7 +3,9 @@
 ## About:
 
 Using Markov chains to generate a random sentence from a given corpus (South Park text). 
-Currently able to generate chains to the n'th order. 
+Currently able to generate chains to the 2nd order (but Markov class is optimised to the n'th order). 
+
+A markov chain based application that generates sentences via a corpus
 
 ## Requirements: 
 
