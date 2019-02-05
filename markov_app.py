@@ -10,7 +10,7 @@ def main():
     markov = Markov_nth_order(order=3)
 
     markov.create_dict_of_dict(word_list)
-    sentence_list = markov.generate_random_sentence(word_list, 20)
+    sentence_list = markov.generate_random_sentence(20)
     # print(" ".join(sentence_list))
     sentence_list = " ".join(sentence_list)
 

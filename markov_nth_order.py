@@ -45,22 +45,43 @@ class Markov_nth_order(dict):
             self.types += 1
             self.tokens += 1
     
-    def generate_random_sentence(self, word_list, sentence_length=8):
+    def generate_random_sentence(self, sentence_length=8):
         """ 
         Generating a random sentence from given corpus using markov chains,
         returning as a list. 
         """
         random_sentence_output = list()
+        all_types = list(self.keys())
+        
         # I will use a completely random word as my first word.
-        random_index = random.randint(0, len(self.keys())-1)
-        random_type = list(self.keys())[random_index]
-        random_word = random_type[0]
+        # random_index = random.randrange(0, len(all_types))
+        # random_type = all_types[random_index]
+        # random_word = random_type[0]
+
+        # Weighed first word
+            # iterate through dict and inner dict to count the freq of word_list[i]. 
+            # create histogram based on this freq.
+            # call output_random_word on this dict.
+        type_frequency_dict = {}
+        for type, histogram in self.items():
+            for word, frequency in histogram.items():
+                if word in type_frequency_dict:
+                    type_frequency_dict[word] += frequency
+                else:
+                    type_frequency_dict[word] = frequency
+        random_word = output_random_word(type_frequency_dict)
+
+        # for word in all_types:
+        #     if word in self.[word]:
+        #         self.count += 1
+        #         if word in self.values()[word]:
+        #             self.count += 1 
 
         next_words = list(random_type[1:self.order])
         random_sentence_output.extend((word for word in random_type))
         
         output_count = 1
-        # * Now using 2nd order markov chains to append the most likely "next_next_word"
+        # * Now using n'th order markov chains to append the most likely "next_next_word"
         while output_count < sentence_length:
             try:
                 random_word = output_random_word(self[random_word])
