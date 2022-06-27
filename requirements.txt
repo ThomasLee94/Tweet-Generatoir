@@ -8,7 +8,7 @@ itsdangerous==1.1.0
 Jinja2==2.10
 Mako==1.0.7
 MarkupSafe==1.1.0
-mysql-connector-python==8.0.13
+mysql-connector-python==8.0.14
 oauthlib==2.1.0
 protobuf==3.6.1
 python-dotenv==0.10.0
